@@ -1,6 +1,6 @@
 <phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Brickftp PHP Test Suite">
+        <testsuite name="files test suite">
             <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
@@ -13,5 +13,7 @@
         <log type="coverage-clover" target="clover.xml"/>
     </logging>
     <php>
+        <env name='BRICKFTP_KEY' value='' />
+        <env name='BRICKFTP_DOMAIN' value='' />
     </php>
 </phpunit>

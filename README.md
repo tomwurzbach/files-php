@@ -1,4 +1,4 @@
-# PHP classes for API access to BrickFTP
+# PHP classes for API access to BrickFTP/files.com
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tomwurzbach/files-php.svg?style=flat-square)](https://packagist.org/packages/tomwurzbach/files-php)
 [![Build Status](https://img.shields.io/travis/tomwurzbach/files-php/master.svg?style=flat-square)](https://travis-ci.org/tomwurzbach/files-php)
@@ -15,7 +15,7 @@ Before using this package we highly recommend reading [the entire documentation 
 You can install the package via composer:
 
 ```bash
-composer require tomwurzbach/brickftp-php
+composer require tomwurzbach/files-php
 ```
 
 ## Contributing
