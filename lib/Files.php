@@ -62,7 +62,7 @@ class Files
 
     static protected function client()
     {
-        $client = new Client( [ 'base_uri' => "https:/{$domain}/api/rest/v1/" ] );
+        $client = new Client( [ 'base_uri' => "https:/" . static::$domain . "/api/rest/v1/" ] );
         return $client;
     }
 }
