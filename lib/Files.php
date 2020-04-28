@@ -2,12 +2,11 @@
 
 namespace Files;
 
-use App\Files\Exceptions\FileNotFoundException;
-use App\Files\Exceptions\MethodNotAllowed;
-use App\Files\Exceptions\UnprocessableEntityException;
+use Files\Exceptions\FileNotFoundException;
+use Files\Exceptions\MethodNotAllowed;
+use Files\Exceptions\UnprocessableEntityException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use Illuminate\Support\Arr;
 
 class Files
 {
