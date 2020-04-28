@@ -21,23 +21,37 @@ class Files
 
     static public function get( $uri, $arr = [] )
     {
-        $headers = [ 'X-FilesAPI-Key' => static::$apiKey ];
-        $client = static::client();
+        try {
+            $headers = [ 'X-FilesAPI-Key' => static::$apiKey ];
+            $client = static::client();
 
-        $response = $client->get( $uri . '.json' . http_build_query( $arr ), [ 'headers' => $headers ] );
+            $response = $client->get( $uri . '.json' . http_build_query( $arr ), [ 'headers' => $headers ] );
 
-        return json_decode( $response->getBody()->getContents(), true );
+            return json_decode( $response->getBody()->getContents(), true );
+        } catch ( ClientException $e ) {
+            if ( $e->getCode() == 404 ) throw new FileNotFoundException( 'get ' . $uri, $e );
+            if ( $e->getCode() == 405 ) throw new MethodNotAllowed( 'get ' . $uri, $e );
+            if ( $e->getCode() == 422 ) throw new UnprocessableEntityException( 'get ' . $uri, $e );
+            throw $e;
+        }
     }
 
     static public function get_simple( $uri, $arr = [] )
     {
-        $headers = [ 'X-FilesAPI-Key' => static::$apiKey ];
-        $client = static::client();
+        try {
+            $headers = [ 'X-FilesAPI-Key' => static::$apiKey ];
+            $client = static::client();
 
-        $uri = $uri . '?'.http_build_query( $arr );
-        $response = $client->get( $uri, [ 'headers' => $headers ] );
+            $uri = $uri . '?' . http_build_query( $arr );
+            $response = $client->get( $uri, [ 'headers' => $headers ] );
 
-        return json_decode( $response->getBody()->getContents(), true );
+            return json_decode( $response->getBody()->getContents(), true );
+        } catch ( ClientException $e ) {
+            if ( $e->getCode() == 404 ) throw new FileNotFoundException( 'get_simple ' . $uri, $e );
+            if ( $e->getCode() == 405 ) throw new MethodNotAllowed( 'get_simple ' . $uri, $e );
+            if ( $e->getCode() == 422 ) throw new UnprocessableEntityException( 'get_simple ' . $uri, $e );
+            throw $e;
+        }
     }
 
     static public function post( $uri, $arr = [], $json = true )
