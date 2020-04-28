@@ -1,0 +1,37 @@
+{
+  "name": "tomwurzbach/files-php",
+  "type": "project",
+  "description": "Wrapper for Files.com API library",
+  "keywords": [
+    "brickftp",
+    "files",
+    "files.com",
+    "brickftp.com"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.4.0",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Files\\": "lib/"
+    },
+    "classmap": [
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
