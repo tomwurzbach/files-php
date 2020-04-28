@@ -14,7 +14,7 @@ class Folder
     static public function listFor( $path, $arr = [] )
     {
         $files = Files::get_simple( 'folders/'. $path, $arr );
-        dd( $files );
+        return $files;
     }
 }
 
