@@ -5,12 +5,9 @@ namespace Files;
 
 class File
 {
-    public static function find( $id, $arr = [] )
+    public static function find( $path, $arr = [] )
     {
-        $arr || $arr = [];
-        $arr[ 'id' ] = $id;
-
-        $file = Files::get_simple( 'files/', $arr, false );
+        $file = Files::get_simple( 'files/' . $path, $arr, false );
         return $file;
     }
 }
