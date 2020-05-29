@@ -16,6 +16,12 @@ class Behaviors
         return $behaviors;
     }
 
+    public static function find( $id )
+    {
+        $behavior = Files::get( "behaviors/{$id}" );
+        return $behavior;
+    }
+
     public static function create( $arr )
     {
         $behavior = Files::post( 'behaviors', $arr );
