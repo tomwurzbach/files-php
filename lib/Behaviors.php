@@ -2,7 +2,7 @@
 
 namespace Files;
 
-class Users
+class Behaviors
 {
     public static function list( $arr )
     {
