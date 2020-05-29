@@ -7,7 +7,7 @@ class Behaviors
     public static function list( $arr )
     {
         $behaviors = Files::get( 'behaviors', $arr );
-        return $users;
+        return $behaviors;
     }
 
     public static function listFor( $path, $arr )
