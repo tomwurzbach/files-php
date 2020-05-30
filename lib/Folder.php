@@ -14,7 +14,7 @@ class Folder
             $path = Files::post( 'folders/' . $path, [], false );
             return $path;
         } catch ( MethodNotAllowed $e ) {
-            $message = $e->getMessage();
+            $message = $e->getPrevious()->getMessage();
             $parts = explode( "\n", $message );
             if ( sizeof( $parts ) < 2 ) throw $e;
 
