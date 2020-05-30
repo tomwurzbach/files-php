@@ -16,7 +16,7 @@ class Folder
         } catch ( MethodNotAllowed $e ) {
             $message = $e->getMessage();
             $parts = explode( "\n", $message );
-            if ( sizeof( $parts ) < 2 ) throw $e );
+            if ( sizeof( $parts ) < 2 ) throw $e;
 
             $json = collect( json_decode( $parts[ 1 ], true ) );
             if ( $json->get( 'error' ) == 'file or folder already exists with that name' ) throw new FileOrFolderExistsException( $path, $e );
