@@ -12,7 +12,7 @@ class Permissions
 
     public static function create( $path, $arr )
     {
-        $permission = Files::post( 'permissions', array_merge( [ 'path' => $path, $arr ] );
+        $permission = Files::post( 'permissions', array_merge( [ 'path' => $path ], $arr );
         return $permission;
     }
 
