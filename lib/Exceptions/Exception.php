@@ -20,7 +20,7 @@ class Exception extends \Exception
 
         $this->contents = json_decode( $exception->getResponse()->getBody()->getContents(), true );
 
-        $message = $e->getPrevious()->getMessage();
+        $message = $exception->getPrevious()->getMessage();
         $parts = explode( "\n", $message );
         if ( sizeof( $parts ) >= 2 ) {
 
