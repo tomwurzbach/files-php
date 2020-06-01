@@ -18,15 +18,9 @@ class Exception extends \Exception
     {
         parent::__construct( $msg, 0, $exception );
 
-        $this->contents = json_decode( $exception->getResponse()->getBody()->getContents(), true );
-
-        $message = $exception->getPrevious()->getMessage();
-        $parts = explode( "\n", $message );
-        if ( sizeof( $parts ) >= 2 ) {
-
-            $json = collect( json_decode( $parts[ 1 ], true ) );
-            $this->error = $json->get( 'error' );
-        }
+        $this->contents = collect( json_decode( $exception->getResponse()->getBody()->getContents(), true ) );
+        $this->error = $this->contents->get( 'error' );
+        $this->errors = $this->contents->get( 'errors' );
     }
 
     public function getContents()
@@ -39,4 +33,8 @@ class Exception extends \Exception
         return $this->error;
     }
 
+    public function getErrors()
+    {
+        return $this->errors;
+    }
 }

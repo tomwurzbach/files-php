@@ -12,7 +12,7 @@ class Behaviors
 
     public static function listFor( $path, $arr )
     {
-        $behaviors = Files::get( "behaviors/folders/{$path}" );
+        $behaviors = Files::get_simple( "behaviors/folders/{$path}" );
         return $behaviors;
     }
 
