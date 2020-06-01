@@ -2,18 +2,8 @@
 
 namespace Files\Exceptions;
 
-class MethodNotAllowed extends \Exception
+use Files\Exceptions\Exception as FileException;
+
+class MethodNotAllowed extends FileException
 {
-    protected $contents;
-
-    public function __construct( $msg, $exception )
-    {
-        parent::__construct( $msg, 0, $exception );
-        $this->contents = json_decode( $exception->getResponse()->getBody()->getContents(), true );
-    }
-
-    public function getContents()
-    {
-        return $this->contents;
-    }
 }

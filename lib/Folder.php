@@ -14,12 +14,9 @@ class Folder
             $path = Files::post( 'folders/' . $path, [], false );
             return $path;
         } catch ( MethodNotAllowed $e ) {
-            $message = $e->getPrevious()->getMessage();
-            $parts = explode( "\n", $message );
-            if ( sizeof( $parts ) < 2 ) throw $e;
+            if ( $e->getError() == 'file or folder already exists with that name' )
+                throw new FileOrFolderExistsException( "File or folder exists", $e->getPrevious() );
 
-            $json = collect( json_decode( $parts[ 1 ], true ) );
-            if ( $json->get( 'error' ) == 'file or folder already exists with that name' ) throw new FileOrFolderExistsException( $path, $e );
             throw $e;
         }
     }

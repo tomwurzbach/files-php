@@ -8,10 +8,8 @@
 
 namespace Files\Exceptions;
 
-class FileOrFolderExistsException extends \Exception
+use Files\Exceptions\Exception as FileException;
+
+class FileOrFolderExistsException extends FileException
 {
-    public function __construct( $path, $previous = null )
-    {
-        parent::__construct( sprintf( "File exists - %s', $path ), 0, $previous );
-    }
 }
